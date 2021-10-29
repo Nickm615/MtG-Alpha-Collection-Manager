@@ -1,0 +1,25 @@
+{
+  "name": "project-2-mtg-collection-manager",
+  "version": "1.0.0",
+  "description": "Full-Stack Card Collection Management app utilizing MVC structure",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nickm615/Project-2-MtG-Collection-Manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nickm615/Project-2-MtG-Collection-Manager/issues"
+  },
+  "homepage": "https://github.com/Nickm615/Project-2-MtG-Collection-Manager#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.8.0"
+  }
+}
