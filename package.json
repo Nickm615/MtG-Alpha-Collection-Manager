@@ -28,6 +28,7 @@
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
     "helpers": "0.0.6",
+    "mtgsdk": "^0.4.3",
     "mysql2": "^2.3.2",
     "sequelize": "^6.8.0",
     "sequelize-store": "^0.4.2"
