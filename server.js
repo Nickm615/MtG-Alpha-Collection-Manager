@@ -1,11 +1,12 @@
-//I copied this directly from mini-project unit 14. We can delete what we don't need, add what we do, etc. --Nick
-
+const path = require('path')
 const express = require('express');
 const session = require('express-session');
-const routes = require('./controllers');
+const exphbs = require('express-handlebars')
 
+const routes = require('./controllers');
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helpers = require('./utils/helpers')
+// const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,18 +16,25 @@ const sess = {
   cookie: {},
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
+  // store: new SequelizeStore({
+  //   db: sequelize
+  // })
 };
 
 app.use(session(sess));
 
+const hbs = exphbs.create({ helpers });
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening at${port}`));
+  app.listen(PORT, () => console.log(`Now listening at${PORT}`));
 });

@@ -19,7 +19,17 @@
   },
   "homepage": "https://github.com/Nickm615/Project-2-MtG-Collection-Manager#readme",
   "dependencies": {
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^10.0.0",
+    "exphbs": "^1.2.0",
     "express": "^4.17.1",
-    "sequelize": "^6.8.0"
+    "express-handlebars": "^5.3.4",
+    "express-router": "0.0.1",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "helpers": "0.0.6",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.8.0",
+    "sequelize-store": "^0.4.2"
   }
 }
