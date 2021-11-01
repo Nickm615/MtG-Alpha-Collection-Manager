@@ -37,6 +37,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+require('./config/connection');
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next)=>{
+  console.log(req.session);
+  console.log(req.user);
+  next();
+});
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
