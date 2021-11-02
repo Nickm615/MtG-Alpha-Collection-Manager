@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MtG Card Collector</title>
 </head>
 <body>
-    <h1>Hello world</h1>
-    {{{body}}}
+    <header>
+        <h1>Gotta get 'em all</h1>
+    </header>
+    <nav>
+        <a href="/login">login</a>
+        <a href="/collection">My collection</a>
+        {{#if loggedIn}}
+        <button id='logout' class='btn-no-style'>Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+    </nav>
+    <main>
+         {{{body}}}
+    </main>
+     {{#if loggedIn}}
+    <script src='/js/logout.js'></script>
+    {{/if}}
+   
 </body>
 </html>
