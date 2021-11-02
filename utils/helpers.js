@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
 
-function createPassword(password){
+// function createPassword(password){
     
-}
+// }

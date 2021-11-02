@@ -22,14 +22,14 @@ const sess = {
   cookie: { maxAge: 86400000 },
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
+  // store: new SequelizeStore({
+  //   db: sequelize,
+  // }),
 };
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create();
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
