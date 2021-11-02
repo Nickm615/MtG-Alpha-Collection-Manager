@@ -6,6 +6,7 @@ const exphbs = require("express-handlebars");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const routes = require("./controllers");
+const models = require("./models");
 // const helpers = require('')
 
 const sequelize = require("./config/connection");
@@ -16,9 +17,6 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.get('/', function(req, res){
-  res.send('Testing')
-});
 const sess = {
   secret: "Super secret secret",
   cookie: { maxAge: 86400000 },
@@ -40,22 +38,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-require('./config/connection');
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next)=>{
-  console.log(req.session);
-  console.log(req.user);
-  next();
-});
+const authRoute = require("./controllers/authcontroller");
+authRoute(app, passport);
 
-// app.use(routes);
+app.use(authRoute);
+
+const passportFunction = require("./config/passport/passport.js");
+passportFunction(passport, models.User);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening at${PORT}`));
 });
-
-
-
