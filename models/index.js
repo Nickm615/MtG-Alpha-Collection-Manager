@@ -18,5 +18,5 @@ User.belongsToMany(Card, {
     as: 'card_owner'
 });
 
-module.exprts = { Collection, User, Card }
+module.exports = { Collection, User, Card };
 
