@@ -16,6 +16,9 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.get('/', function(req, res){
+  res.send('Testing')
+});
 const sess = {
   secret: "Super secret secret",
   cookie: { maxAge: 86400000 },
@@ -48,7 +51,7 @@ app.use((req, res, next)=>{
   next();
 });
 
-app.use(routes);
+// app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening at${PORT}`));
