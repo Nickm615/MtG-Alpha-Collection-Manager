@@ -15,10 +15,10 @@
         <h1>Gotta get 'em all</h1>
     </header>
     <nav>
-
+        {{!-- <a href="/signin">login</a> --}}
         <a href="/collection">My collection</a>
-        {{#if loggedIn}}
-        <button id='logout' class='btn-no-style'>Logout</button>
+        {{#if user}}
+        <a href="/logout">Logout</a>
         {{else}}
         <a href="/signin">Login</a>
         {{/if}}

@@ -38,9 +38,9 @@ module.exports = (passport, user) => {
           // console.log(user);
           if (user) {
             console.log("user exist");
-            // return done(null, false, {
-            //   message: "That email is already taken",
-            // });
+            return done(null, false, {
+              message: "That email is already taken",
+            });
           } else {
             console.log("no user");
 
@@ -54,14 +54,14 @@ module.exports = (passport, user) => {
             };
             //   console.log(data);
             User.create(data).then((newUser) => {
-              // console.log(newUser);
-              // if (!newUser) {
-              //   return done(null, false);
-              // }
+              console.log(newUser);
+              if (!newUser) {
+                return done(null, false);
+              }
 
-              // if (newUser) {
-              //   return done(null, newUser);
-              // }
+              if (newUser) {
+                return done(null, newUser);
+              }
             });
           }
         });
