@@ -22,9 +22,9 @@ const sess = {
   cookie: { maxAge: 86400000 },
   resave: false,
   saveUninitialized: true,
-  // store: new SequelizeStore({
-  //   db: sequelize,
-  // }),
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
