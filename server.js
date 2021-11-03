@@ -44,6 +44,7 @@ app.use(passport.session(sess));
 const authRoute = require("./controllers/authcontroller");
 authRoute(app, passport);
 
+// app.use(routes)
 app.use(authRoute);
 
 const passportFunction = require("./config/passport/passport.js");

@@ -12,7 +12,7 @@ const cardClickHandler = async (event) =>{
         // if (response.ok) {
         //    //put request update quantity here
         // }else {
-            await fetch('/api/cards/', {
+            await fetch('/card-list', {
                 method: 'POST',
                 body: JSON.stringify({id}),
                 headers: { 'Content-Type': 'application/json' },
