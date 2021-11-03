@@ -17,11 +17,18 @@ module.exports = (app, passport) => {
       passport.authenticate("local-signup", {
         successRedirect: "/collection",
         failureRedirect: "/index",
+
       })
     );
   
     app.get("/collection", isLoggedIn, (req, res) => {
-      res.render("collection");
+      console.log(req.user)
+      req.session.save(() => {
+        req.session.loggedUser = req.user});
+      res.render("collection", {
+        user:req.session.loggedUser
+      });
+   
     });
   
     app.get("/logout", (req, res) => {
