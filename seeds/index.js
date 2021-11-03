@@ -3,7 +3,7 @@ const seedCards = require('./cardData');
 const mtg = require('mtgsdk');
 const seedAll = async () => {
     
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
 
     const cards = await mtg.card.where({setName: 'Limited Edition Alpha', pageSize:10});
     // console.log(cards);

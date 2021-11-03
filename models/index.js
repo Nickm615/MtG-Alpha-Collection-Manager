@@ -7,15 +7,17 @@ Card.belongsToMany(User, {
         model: Collection,
         unique: false
     },
-    as: 'cards_in_collection'
+    as: 'cards_in_collection',
+    onDelete: 'CASCADE'
 });
 
 User.belongsToMany(Card, {
     through: {
         model: Collection,
-        unique:false
+        unique:false,
     },
-    as: 'card_owner'
+    as: 'card_owner',
+    onDelete: 'CASCADE'
 });
 
 module.exports = { Collection, User, Card };

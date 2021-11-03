@@ -7,6 +7,7 @@ const{ Card, User, Collection } = require('../models')
 router.get('/', async (req, res) => {
     try{
     const dbCardData = await Card.findAll();
+    // console.log(dbCardData)
     const cards = dbCardData.map((e) => 
         e.get({plain: true})
         

@@ -4,17 +4,20 @@ const cardClickHandler = async (event) =>{
     const id = (event.target.id)
     console.log(id)
     
-       const response =  await fetch('/api/cards', {
-            method: 'POST',
-            body: JSON.stringify({id}),
-            headers: { 'Content-Type': 'application/json' },
+    //    const response =  await fetch('/api/cards/' +id, {
+    //         method: 'GET',
 
+    //     });
+    //     console.log(response)
+        // if (response.ok) {
+        //    //put request update quantity here
+        // }else {
+            await fetch('/api/cards/', {
+                method: 'POST',
+                body: JSON.stringify({id}),
+                headers: { 'Content-Type': 'application/json' },
+    
         });
-        if (response.ok) {
-            console.log('ok')
-        }else {
-            console.log(response)
-        }
 
         // if (response.ok) {
         //     response.status(200).json('Card added to collection')
