@@ -4,23 +4,23 @@ const{ Card, User, Collection } = require('../models')
 
 
 // GET request for cards
-router.get('/', async (req, res) => {
-    try{
-    const dbCardData = await Card.findAll();
-    // console.log(dbCardData)
-    const cards = dbCardData.map((e) => 
-        e.get({plain: true})
+// router.get('/card-list', async (req, res) => {
+//     try{
+//     const dbCardData = await Card.findAll();
+//     // console.log(dbCardData)
+//     const cards = dbCardData.map((e) => 
+//         e.get({plain: true})
         
-    );
-    res.render('card-list', {
-        cards,
-       // loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  };
-});
+//     );
+//     res.render('card-list', {
+//         cards,
+//        // loggedIn: req.session.loggedIn,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   };
+// });
 
 router.post('/', async (req, res) => {
     try {

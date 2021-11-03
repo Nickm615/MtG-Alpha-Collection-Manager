@@ -26,7 +26,7 @@ const { Collection } = require('../../models');
 //     }
 // })
 
-router.post('/', async (req, res) => {
+router.post('/card-list', async (req, res) => {
     console.log('===================================================')
     console.log(req.body)
     console.log('===================================================')
