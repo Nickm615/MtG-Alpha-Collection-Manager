@@ -1,4 +1,4 @@
-//This is copied directly from the unit 14 mini project, we can edit it as needed.
+// //This is copied directly from the unit 14 mini project, we can edit it as needed.
 
 const Sequelize = require('sequelize');
 require('dotenv').config();

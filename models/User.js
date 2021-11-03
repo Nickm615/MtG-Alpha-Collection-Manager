@@ -15,10 +15,18 @@ User.init(
         autoIncrement: true,
         allowNull: false
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
+        first_name: {
+          type: DataTypes.STRING,
+          allowNull: false,
         },
+        last_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          username:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -37,14 +45,9 @@ User.init(
         
     },
     {
-        // hooks: {
-        //     beforeCreate: async (newUserData) => {
-        //       newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        //       return newUserData;
-        //     },
-        //   },
+    
         sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
