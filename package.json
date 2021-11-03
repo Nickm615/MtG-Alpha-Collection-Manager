@@ -25,11 +25,12 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
     "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mtgsdk": "^0.4.3",
     "mysql2": "^2.3.2",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
     "sequelize": "^6.8.0",
-    "handlebars": "^4.7.7",
     "sequelize-store": "^0.4.2"
   }
 }

@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
                 user_id: 1
             }, { fields: ['card_id', 'quantity', 'user_id'] });
         } else {
-            console.log('update data',checkCardData.dataValues);
+            // console.log('update data',checkCardData.dataValues);
             const dbCardData = await Collection.update({
                 
                 quantity: checkCardData.dataValues.quantity + 1,
