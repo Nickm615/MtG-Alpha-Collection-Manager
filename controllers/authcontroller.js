@@ -1,3 +1,4 @@
+const{ Card, User, Collection } = require('../models')
 module.exports = (app, passport) => {
     // console.log(passport);
     app.get("/", (req, res) => {
@@ -44,7 +45,76 @@ module.exports = (app, passport) => {
         failureRedirect: "/",
       })
     );
-  
+    app.get('/card-list', async (req, res) => {
+      try{
+      const dbCardData = await Card.findAll();
+      // console.log(dbCardData)
+      const cards = dbCardData.map((e) => 
+          e.get({plain: true})
+          
+      );
+
+      
+      res.render('card-list', {
+          cards,
+         // loggedIn: req.session.loggedIn,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    };
+  });
+
+  app.post('/card-list', async (req, res) => {
+    console.log('===================================================')
+    console.log(req.body)
+    console.log('===================================================')
+
+    try {
+      console.log(req.session.loggedUser.id)
+
+        const checkCardData = await Collection.findOne({
+            where: {
+                card_id: parseInt(req.body.id),
+                user_id: req.session.loggedUser.id
+            }
+        })
+        // console.log(checkCardData.dataValues);
+        if (!checkCardData) {
+            console.log('no data');
+            const dbCardData = await Collection.create({
+                card_id: parseInt(req.body.id),
+                quantity: 1,
+                user_id: req.session.loggedUser.id
+            }, { fields: ['card_id', 'quantity', 'user_id'] });
+        } else {
+            // console.log('update data',checkCardData.dataValues);
+            const dbCardData = await Collection.update({
+                
+                quantity: checkCardData.dataValues.quantity + 1,
+              
+            },{
+
+                where: {
+                card_id: parseInt(req.body.id),
+                user_id: req.session.loggedUser.id
+            }
+            }
+            );
+        }
+        // const dbCardData = await Collection.create({
+        //     card_id: parseInt(req.body.id),
+        //     quantity: 1,
+        //     user_id: 1
+        // // });
+        // } ,{fields:['card_id', 'quantity', 'user_id']});
+        res.status(200).json('Card added to collection')
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+})
+
     function isLoggedIn(req, res, next) {
       if (req.isAuthenticated()) return next();
   
