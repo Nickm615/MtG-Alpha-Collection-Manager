@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const Card = require('../../models/Card');
-const { Collection } = require('../../models');
+const router = require("express").Router();
+const Card = require("../../models/Card");
+const { Collection } = require("../../models");
 
 // router.get('/:id', async (req, res) => {
 //     console.log(req.params.id)
@@ -26,51 +26,52 @@ const { Collection } = require('../../models');
 //     }
 // })
 
-router.post('/', async (req, res) => {
-    console.log('===================================================')
-    console.log(req.body)
-    console.log('===================================================')
+router.post("/", async (req, res) => {
+  console.log("===================================================");
+  console.log(req.body);
+  console.log("===================================================");
 
-    try {
-
-        const checkCardData = await Collection.findOne({
-            where: {
-                card_id: parseInt(req.body.id)
-            }
-        })
-        // console.log(checkCardData.dataValues);
-        if (!checkCardData) {
-            console.log('no data');
-            const dbCardData = await Collection.create({
-                card_id: parseInt(req.body.id),
-                quantity: 1,
-                user_id: 1
-            }, { fields: ['card_id', 'quantity', 'user_id'] });
-        } else {
-            console.log('update data',checkCardData.dataValues);
-            const dbCardData = await Collection.update({
-                
-                quantity: checkCardData.dataValues.quantity + 1,
-              
-            },{
-
-                where: {
-                card_id: parseInt(req.body.id)
-            }
-            }
-            );
+  try {
+    const checkCardData = await Collection.findOne({
+      where: {
+        card_id: parseInt(req.body.id),
+      },
+    });
+    // console.log(checkCardData.dataValues);
+    if (!checkCardData) {
+      console.log("no data");
+      const dbCardData = await Collection.create(
+        {
+          card_id: parseInt(req.body.id),
+          quantity: 1,
+          user_id: 1,
+        },
+        { fields: ["card_id", "quantity", "user_id"] }
+      );
+    } else {
+      // console.log('update data',checkCardData.dataValues);
+      const dbCardData = await Collection.update(
+        {
+          quantity: checkCardData.dataValues.quantity + 1,
+        },
+        {
+          where: {
+            card_id: parseInt(req.body.id),
+          },
         }
-        // const dbCardData = await Collection.create({
-        //     card_id: parseInt(req.body.id),
-        //     quantity: 1,
-        //     user_id: 1
-        // // });
-        // } ,{fields:['card_id', 'quantity', 'user_id']});
-        res.status(200).json('Card added to collection')
-    } catch (err) {
-        console.log(err)
-        res.status(500).json(err)
+      );
     }
-})
+    // const dbCardData = await Collection.create({
+    //     card_id: parseInt(req.body.id),
+    //     quantity: 1,
+    //     user_id: 1
+    // // });
+    // } ,{fields:['card_id', 'quantity', 'user_id']});
+    res.status(200).json("Card added to collection");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-module.exports = router
+module.exports = router;

@@ -1,5 +1,5 @@
 module.exports = (app, passport) => {
-    console.log(passport);
+    // console.log(passport);
     app.get("/", (req, res) => {
       res.render("index");
     });
