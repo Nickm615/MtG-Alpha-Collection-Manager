@@ -101,10 +101,12 @@ module.exports = (app, passport) => {
   // app.post("/card-list",  async (req, res) => {
   app.post("/card-list", isLoggedIn, async (req, res) => {
     try {
-      console.log(req.session.loggedUser);
-      console.log(req.session.loggedUser.id);
+      // console.log(req.session.loggedUser);
+      // console.log(req.session.loggedUser.id);
       console.log(req.user);
       console.log(req.body);
+      console.log(req.user.id);
+      console.log(req.body.id);
 
       const checkCardData = await Collection.findOne({
         where: {
