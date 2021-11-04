@@ -28,7 +28,7 @@ module.exports = (app, passport) => {
       // Get all projects and JOIN with user data
       const collectionData = await Collection.findAll({
         where: {
-          user_id: req.user.id,
+          user_id: parseInt(req.user.id),
         },
         // include: [
         //   {
