@@ -16,10 +16,14 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+app.enable('trust proxy');
 const sess = {
   secret: "Super secret secret",
-  cookie: { maxAge: 86400000, secure: process.env.NODE_ENV == "production" ? true : false , },
+  cookie: {
+    maxAge: 86400000,
+    secure: process.env.NODE_ENV == "production" ? true : false,
+    
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

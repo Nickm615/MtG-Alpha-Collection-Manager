@@ -1,6 +1,19 @@
 const { Card, User, Collection } = require("../models");
 module.exports = (app, passport) => {
   // console.log(passport);
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      console.log("failure");
+      // res.redirect("/");
+      res
+        .status(401)
+        .json({ msg: "You are not authorized to view this resource" });
+    }
+  }
+
   app.get("/", (req, res) => {
     res.render("index");
   });
@@ -15,12 +28,13 @@ module.exports = (app, passport) => {
 
   app.post(
     "/signup",
+    // passport.authenticate("local-signup", {
     passport.authenticate("local-signup", {
       successRedirect: "/signin",
       failureRedirect: "/",
     })
   );
-
+  // app.get("/collection",  async (req, res) => {
   app.get("/collection", isLoggedIn, async (req, res) => {
     try {
       // console.log(req.user.id);
@@ -30,47 +44,34 @@ module.exports = (app, passport) => {
         where: {
           user_id: parseInt(req.user.id),
         },
-        // include: [
-        //   {
-        //     model: Card,
-        //     // as: 'card_owner',
-        //     attributes: ["imageUrl"],
-        //   },
-        // ],
       });
+      console.log(req.user.id);
       console.log(collectionData);
       // Serialize data so the template can read it
       const cards = collectionData.map((card) => card.get({ plain: true }));
       // console.log(cards);
-      
+
       req.session.save(() => {
-        req.session.loggedUser = req.user;
+        req.session.loggedUser = req.session.passport.user;
+        console.log("success");
       });
-      console.log(req.session)
+      console.log(req.session);
+      console.log(req.session.passport.user);
       // Pass serialized data and session flag into template
       res.render("collection", {
         cards,
-        user: req.session.loggedUser,
+        user: req.session.passport.user,
       });
     } catch (err) {
       res.status(500).json(err);
     }
   });
-    //   console.log(req.user);
 
-    //   req.session.save(() => {
-    //     req.session.loggedUser = req.user;
-    //   });
-    //   res.render("collection", {
-    //     user: req.session.loggedUser,
-    //   });
-    // });
-
-    app.get("/logout", (req, res) => {
-      req.session.destroy((err) => {
-        res.redirect("/");
-      });
+  app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+      res.redirect("/");
     });
+  });
 
   app.post(
     "/signin",
@@ -79,12 +80,16 @@ module.exports = (app, passport) => {
       failureRedirect: "/",
     })
   );
-  app.get("/card-list", async (req, res) => {
+  // app.get("/card-list",  async (req, res) => {
+  app.get("/card-list", isLoggedIn, async (req, res) => {
     try {
       // console.log(req.session.loggedUser.id)
       const dbCardData = await Card.findAll();
       // console.log(dbCardData)
       const cards = dbCardData.map((e) => e.get({ plain: true }));
+      req.session.save(() => {
+        req.session.loggedUser = req.user;
+      });
 
       res.render("card-list", {
         cards,
@@ -95,16 +100,21 @@ module.exports = (app, passport) => {
       res.status(500).json(err);
     }
   });
-
-  app.post("/card-list", async (req, res) => {
+  // app.post("/card-list",  async (req, res) => {
+  app.post("/card-list", isLoggedIn, async (req, res) => {
     try {
-      console.log(req.session.loggedUser);
+      // console.log(req.session.loggedUser);
+      // console.log(req.session.loggedUser.id);
+      console.log(req.user);
       console.log(req.body);
+      console.log(req.user.id);
+      console.log(req.body.id);
 
       const checkCardData = await Collection.findOne({
         where: {
           card_id: parseInt(req.body.id),
-          user_id: req.session.loggedUser.id,
+          // user_id: req.session.loggedUser.id,
+          user_id: req.user.id,
         },
       });
       // console.log(checkCardData.dataValues);
@@ -114,10 +124,12 @@ module.exports = (app, passport) => {
           {
             card_id: parseInt(req.body.id),
             quantity: 1,
-            user_id: req.session.loggedUser.id,
+            // user_id: req.session.loggedUser.id,
+            user_id: req.user.id,
             imageUrl: req.body.url,
             cardId: parseInt(req.body.id),
-            userId: req.session.loggedUser.id,
+            // userId: req.session.loggedUser.id,
+            userId: req.user.id,
           },
           {
             fields: [
@@ -139,17 +151,13 @@ module.exports = (app, passport) => {
           {
             where: {
               card_id: parseInt(req.body.id),
-              user_id: req.session.loggedUser.id,
+              // user_id: req.session.loggedUser.id,
+              user_id: req.user.id,
             },
           }
         );
       }
-      // const dbCardData = await Collection.create({
-      //     card_id: parseInt(req.body.id),
-      //     quantity: 1,
-      //     user_id: 1
-      // // });
-      // } ,{fields:['card_id', 'quantity', 'user_id']});
+
       res.status(200).json("Card added to collection");
     } catch (err) {
       console.log(err);
@@ -157,12 +165,3 @@ module.exports = (app, passport) => {
     }
   });
 
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    else{
-      res.redirect("/");
-    }
-
-   
-  }
-};
