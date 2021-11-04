@@ -41,7 +41,7 @@ module.exports = (app, passport) => {
       console.log(collectionData);
       // Serialize data so the template can read it
       const cards = collectionData.map((card) => card.get({ plain: true }));
-
+      console.log(cards);
       req.session.save(() => {
         req.session.loggedUser = req.user;
       });
@@ -113,7 +113,7 @@ module.exports = (app, passport) => {
             card_id: parseInt(req.body.id),
             quantity: 1,
             user_id: req.session.loggedUser.id,
-            image_url: req.body.url,
+            imageUrl: req.body.url,
             cardId: parseInt(req.body.id),
             userId: req.session.loggedUser.id,
           },
@@ -122,7 +122,7 @@ module.exports = (app, passport) => {
               "card_id",
               "quantity",
               "user_id",
-              "image_url",
+              "imageUrl",
               "cardId",
               "userId",
             ],
