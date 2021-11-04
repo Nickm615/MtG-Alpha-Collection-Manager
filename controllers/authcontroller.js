@@ -53,9 +53,10 @@ module.exports = (app, passport) => {
 
       req.session.save(() => {
         req.session.loggedUser = req.user;
+        console.log("success");
       });
       console.log(req.session);
-      console.log(req.session.loggedUser);
+      console.log(req.session.passport.user);
       // Pass serialized data and session flag into template
       res.render("collection", {
         cards,
