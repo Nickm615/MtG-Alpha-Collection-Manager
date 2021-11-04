@@ -5,7 +5,8 @@ const User = require('./User')
 Card.belongsToMany(User, {
     through: {
         model: Collection,
-        unique: false
+        unique: false,
+        foreignKey: 'card_id'
     },
     as: 'cards_in_collection',
     onDelete: 'CASCADE'
@@ -15,6 +16,7 @@ User.belongsToMany(Card, {
     through: {
         model: Collection,
         unique:false,
+        foreignKey: 'user_id'
     },
     as: 'card_owner',
     onDelete: 'CASCADE'
