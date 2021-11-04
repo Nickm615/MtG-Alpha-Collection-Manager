@@ -102,6 +102,8 @@ module.exports = (app, passport) => {
   app.post("/card-list", isLoggedIn, async (req, res) => {
     try {
       console.log(req.session.loggedUser);
+      console.log(req.session.loggedUser.id);
+      console.log(req.user);
       console.log(req.body);
 
       const checkCardData = await Collection.findOne({
