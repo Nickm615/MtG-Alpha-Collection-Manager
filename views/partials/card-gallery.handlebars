@@ -1,5 +1,8 @@
 <a>
-    <img data-img ="{{imageUrl}}"   src={{imageUrl}} id={{id}} alt="card-images">
+    <img data-img ="{{imageUrl}}"  src={{imageUrl}} id={{id}} alt="card-images">
+    {{#if quantity}}
+    <p class= 'text-center'>You own {{quantity}}</p>
+    {{/if}}
 </a>
 
 {{!-- <a href="google.com"><img src={{imageURL}} alt></a> --}}

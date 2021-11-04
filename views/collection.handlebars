@@ -1,4 +1,5 @@
 <div class="container">
+    <p>testtesttest</p>
     <div class="row">
         <div class="col-md">
             {{#if user}}
@@ -7,9 +8,10 @@
            </h1>
            {{/if}}
         </div>
-        <div id = 'card-field'>
+        <div id = 'card-field' class = 'd-inline-flex'>
         {{#each cards as |card|}}
         {{>card-gallery}}
+        {{!-- <p class="d-inline">You own {{quantity}}</p> --}}
         {{/each}}
         </div>
         </div>
