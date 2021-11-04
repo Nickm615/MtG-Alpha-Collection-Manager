@@ -143,6 +143,7 @@ module.exports = (app, passport) => {
     if (req.isAuthenticated()) {
       return next();
     } else {
+      console.log("failure");
       res.redirect("/");
     }
   }
