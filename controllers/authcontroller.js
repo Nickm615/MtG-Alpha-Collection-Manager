@@ -8,10 +8,12 @@ module.exports = (app, passport) => {
     } else {
       console.log("failure");
       // res.redirect("/");
-      res.status(401).json({ msg: 'You are not authorized to view this resource' });
+      res
+        .status(401)
+        .json({ msg: "You are not authorized to view this resource" });
     }
-  }  
-  
+  }
+
   app.get("/", (req, res) => {
     res.render("index");
   });
@@ -24,8 +26,9 @@ module.exports = (app, passport) => {
     res.render("signin");
   });
 
-  app.post("/signup",
-  // passport.authenticate("local-signup", {
+  app.post(
+    "/signup",
+    // passport.authenticate("local-signup", {
     passport.authenticate("local-signup", {
       successRedirect: "/signin",
       failureRedirect: "/",
@@ -42,6 +45,7 @@ module.exports = (app, passport) => {
           user_id: parseInt(req.user.id),
         },
       });
+      console.log(req.user.id);
       console.log(collectionData);
       // Serialize data so the template can read it
       const cards = collectionData.map((card) => card.get({ plain: true }));
@@ -67,7 +71,8 @@ module.exports = (app, passport) => {
     });
   });
 
-  app.post("/signin",
+  app.post(
+    "/signin",
     passport.authenticate("local-signin", {
       successRedirect: "/collection",
       failureRedirect: "/",
@@ -149,6 +154,4 @@ module.exports = (app, passport) => {
       res.status(500).json(err);
     }
   });
-
-  
 };
