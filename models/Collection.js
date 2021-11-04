@@ -30,7 +30,7 @@ Collection.init(
                 unique: false
             }
         },
-        image_url: {
+        imageUrl: {
             type: DataTypes.STRING,
             allowNull: false,
             references: {

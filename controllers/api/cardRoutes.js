@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const Card = require('../../models/Card');
-const { Collection } = require('../../models');
+const router = require("express").Router();
+const Card = require("../../models/Card");
+const { Collection } = require("../../models");
 
 // router.get('/:id', async (req, res) => {
 //     console.log(req.params.id)

@@ -7,6 +7,11 @@
            </h1>
            {{/if}}
         </div>
-    </div>
+        <div id = 'card-field'>
+        {{#each cards as |card|}}
+        {{>card-gallery}}
+        {{/each}}
+        </div>
+        </div>
 </div>
 <script src="/assets/js/scripts.js"></script>

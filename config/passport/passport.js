@@ -1,7 +1,7 @@
 const bCrypt = require("bcrypt");
 
 module.exports = (passport, user) => {
-  console.log(user);
+  // console.log(user);
   const User = user;
   const LocalStrategy = require("passport-local").Strategy;
 
@@ -33,9 +33,9 @@ module.exports = (passport, user) => {
         var generateHash = (password) => {
           return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
         };
-        console.log(user);
+        // console.log(user);
         User.findOne({ where: { email: email } }).then((user) => {
-          console.log(user);
+          // console.log(user);
           if (user) {
             console.log("user exist");
             return done(null, false, {
