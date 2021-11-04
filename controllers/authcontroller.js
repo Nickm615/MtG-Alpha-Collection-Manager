@@ -94,49 +94,61 @@ module.exports = (app, passport) => {
     }
   });
 
-  app.post('/card-list', async (req, res) => {
-
+  app.post("/card-list", async (req, res) => {
     try {
-      console.log(req.session.loggedUser.id)
-      console.log(req.body.url)
+      console.log(req.session.loggedUser.id);
+      console.log(req.body.url);
 
-        const checkCardData = await Collection.findOne({
+      const checkCardData = await Collection.findOne({
+        where: {
+          card_id: parseInt(req.body.id),
+          user_id: req.session.loggedUser.id,
+        },
+      });
+      // console.log(checkCardData.dataValues);
+      if (!checkCardData) {
+        console.log("no data");
+        const dbCardData = await Collection.create(
+          {
+            card_id: parseInt(req.body.id),
+            quantity: 1,
+            user_id: req.session.loggedUser.id,
+            image_url: req.body.url,
+            cardId: parseInt(req.body.id),
+            userId: req.session.loggedUser.id,
+          },
+          {
+            fields: [
+              "card_id",
+              "quantity",
+              "user_id",
+              "image_url",
+              "cardId",
+              "userId",
+            ],
+          }
+        );
+      } else {
+        // console.log('update data',checkCardData.dataValues);
+        const dbCardData = await Collection.update(
+          {
+            quantity: checkCardData.dataValues.quantity + 1,
+          },
+          {
             where: {
-                card_id: parseInt(req.body.id),
-                user_id: req.session.loggedUser.id
-            }
-        })
-        // console.log(checkCardData.dataValues);
-        if (!checkCardData) {
-            console.log('no data');
-            const dbCardData = await Collection.create({
-                card_id: parseInt(req.body.id),
-                quantity: 1,
-                user_id: req.session.loggedUser.id,
-                image_url: req.body.url
-            }, { fields: ['card_id', 'quantity', 'user_id', 'image_url'] });
-        } else {
-            // console.log('update data',checkCardData.dataValues);
-            const dbCardData = await Collection.update({
-                
-                quantity: checkCardData.dataValues.quantity + 1,
-              
-            },{
-
-                where: {
-                card_id: parseInt(req.body.id),
-                user_id: req.session.loggedUser.id
-            }
-            }
-            );
-        }
-        // const dbCardData = await Collection.create({
-        //     card_id: parseInt(req.body.id),
-        //     quantity: 1,
-        //     user_id: 1
-        // // });
-        // } ,{fields:['card_id', 'quantity', 'user_id']});
-        res.status(200).json('Card added to collection')
+              card_id: parseInt(req.body.id),
+              user_id: req.session.loggedUser.id,
+            },
+          }
+        );
+      }
+      // const dbCardData = await Collection.create({
+      //     card_id: parseInt(req.body.id),
+      //     quantity: 1,
+      //     user_id: 1
+      // // });
+      // } ,{fields:['card_id', 'quantity', 'user_id']});
+      res.status(200).json("Card added to collection");
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
