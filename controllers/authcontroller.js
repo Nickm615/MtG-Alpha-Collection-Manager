@@ -45,6 +45,7 @@ module.exports = (app, passport) => {
       req.session.save(() => {
         req.session.loggedUser = req.user;
       });
+      console.log(req.session.loggedUser)
       // Pass serialized data and session flag into template
       res.render("collection", {
         cards,
@@ -96,8 +97,8 @@ module.exports = (app, passport) => {
 
   app.post("/card-list", async (req, res) => {
     try {
-      console.log(req.session.loggedUser.id);
-      console.log(req.body.url);
+      console.log(req.session.loggedUser);
+      console.log(req.body);
 
       const checkCardData = await Collection.findOne({
         where: {
