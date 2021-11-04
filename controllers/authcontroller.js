@@ -111,7 +111,8 @@ module.exports = (app, passport) => {
       const checkCardData = await Collection.findOne({
         where: {
           card_id: parseInt(req.body.id),
-          user_id: req.session.loggedUser.id,
+          // user_id: req.session.loggedUser.id,
+          user_id: req.user.id,
         },
       });
       // console.log(checkCardData.dataValues);
@@ -121,10 +122,12 @@ module.exports = (app, passport) => {
           {
             card_id: parseInt(req.body.id),
             quantity: 1,
-            user_id: req.session.loggedUser.id,
+            // user_id: req.session.loggedUser.id,
+            user_id: req.user.id,
             imageUrl: req.body.url,
             cardId: parseInt(req.body.id),
-            userId: req.session.loggedUser.id,
+            // userId: req.session.loggedUser.id,
+            userId: req.user.id,
           },
           {
             fields: [
@@ -146,7 +149,8 @@ module.exports = (app, passport) => {
           {
             where: {
               card_id: parseInt(req.body.id),
-              user_id: req.session.loggedUser.id,
+              // user_id: req.session.loggedUser.id,
+              user_id: req.user.id,
             },
           }
         );
