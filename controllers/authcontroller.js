@@ -52,7 +52,7 @@ module.exports = (app, passport) => {
       // console.log(cards);
 
       req.session.save(() => {
-        req.session.loggedUser = req.user;
+        req.session.loggedUser = req.session.passport.user;
         console.log("success");
       });
       console.log(req.session);
