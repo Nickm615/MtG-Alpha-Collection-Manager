@@ -164,4 +164,4 @@ module.exports = (app, passport) => {
       res.status(500).json(err);
     }
   });
-};
+
