@@ -53,7 +53,7 @@ module.exports = (app, passport) => {
     } catch (err) {
       res.status(500).json(err);
     }
-
+  });
     //   console.log(req.user);
 
     //   req.session.save(() => {
@@ -64,11 +64,11 @@ module.exports = (app, passport) => {
     //   });
     // });
 
-    // app.get("/logout", (req, res) => {
-    //   req.session.destroy((err) => {
-    //     res.redirect("/");
-    //   });
-  });
+    app.get("/logout", (req, res) => {
+      req.session.destroy((err) => {
+        res.redirect("/");
+      });
+    });
 
   app.post(
     "/signin",
