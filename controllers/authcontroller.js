@@ -42,8 +42,12 @@ module.exports = (app, passport) => {
       // Serialize data so the template can read it
       const cards = collectionData.map((card) => card.get({ plain: true }));
       console.log(cards);
+      const user = {
+        id: 1,
+        first_name: 'test'
+      }
       req.session.save(() => {
-        req.session.loggedUser = req.user;
+        req.session.loggedUser = user;
       });
       console.log(req.session.loggedUser)
       // Pass serialized data and session flag into template
