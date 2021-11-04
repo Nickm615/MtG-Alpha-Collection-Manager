@@ -24,7 +24,7 @@ module.exports = (app, passport) => {
   app.get("/collection", isLoggedIn, async (req, res) => {
     try {
       // console.log(req.user.id);
-      console.log("hello, world");
+      // console.log("hello, world");
       // Get all projects and JOIN with user data
       const collectionData = await Collection.findAll({
         where: {
@@ -41,7 +41,7 @@ module.exports = (app, passport) => {
       console.log(collectionData);
       // Serialize data so the template can read it
       const cards = collectionData.map((card) => card.get({ plain: true }));
-      console.log(cards);
+      // console.log(cards);
       const user = {
         id: 1,
         first_name: 'test'
@@ -49,7 +49,7 @@ module.exports = (app, passport) => {
       req.session.save(() => {
         req.session.loggedUser = user;
       });
-      console.log(req.session.loggedUser)
+      console.log(req.session)
       // Pass serialized data and session flag into template
       res.render("collection", {
         cards,
