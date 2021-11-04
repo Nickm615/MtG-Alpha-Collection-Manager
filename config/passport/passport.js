@@ -6,16 +6,16 @@ module.exports = (passport, user) => {
   const LocalStrategy = require("passport-local").Strategy;
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    return done(null, user.id);
   });
 
   // used to deserialize the user
   passport.deserializeUser((id, done) => {
     User.findByPk(id).then((user) => {
       if (user) {
-        done(null, user.get());
+        return done(null, user.get());
       } else {
-        done(user.errors, null);
+        return done(user.errors, null);
       }
     });
   });
