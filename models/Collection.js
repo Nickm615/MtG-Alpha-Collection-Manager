@@ -29,6 +29,14 @@ Collection.init(
                 key: 'id',
                 unique: false
             }
+        },
+        image_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'card',
+                key: 'imageUrl'
+            }
         }
         
     },
@@ -36,7 +44,7 @@ Collection.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    underscored: true,
+    // underscored: true,
     modelName: 'collection'
     }
 )
