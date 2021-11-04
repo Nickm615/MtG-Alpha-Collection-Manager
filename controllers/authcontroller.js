@@ -1,6 +1,16 @@
 const { Card, User, Collection } = require("../models");
 module.exports = (app, passport) => {
   // console.log(passport);
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      console.log("failure");
+      res.redirect("/logout");
+    }
+  }  
+  
   app.get("/", (req, res) => {
     res.render("index");
   });
@@ -140,12 +150,5 @@ module.exports = (app, passport) => {
     }
   });
 
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    } else {
-      console.log("failure");
-      res.redirect("/logout");
-    }
-  }
+  
 };
