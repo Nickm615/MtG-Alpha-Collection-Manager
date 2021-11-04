@@ -7,7 +7,8 @@ module.exports = (app, passport) => {
       return next();
     } else {
       console.log("failure");
-      res.redirect("/logout");
+      // res.redirect("/");
+      res.status(401).json({ msg: 'You are not authorized to view this resource' });
     }
   }  
   
@@ -23,8 +24,8 @@ module.exports = (app, passport) => {
     res.render("signin");
   });
 
-  app.post(
-    "/signup",
+  app.post("/signup",
+  // passport.authenticate("local-signup", {
     passport.authenticate("local-signup", {
       successRedirect: "/signin",
       failureRedirect: "/",
@@ -62,12 +63,11 @@ module.exports = (app, passport) => {
 
   app.get("/logout", (req, res) => {
     req.session.destroy((err) => {
-      res.redirect("/logout");
+      res.redirect("/");
     });
   });
 
-  app.post(
-    "/signin",
+  app.post("/signin",
     passport.authenticate("local-signin", {
       successRedirect: "/collection",
       failureRedirect: "/",
