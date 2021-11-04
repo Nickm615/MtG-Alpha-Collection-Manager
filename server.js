@@ -22,7 +22,7 @@ const sess = {
   cookie: {
     maxAge: 86400000,
     secure: process.env.NODE_ENV == "production" ? true : false,
-    sameSite: true,
+    
   },
   resave: false,
   saveUninitialized: true,
@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session(sess));
 
 const authRoute = require("./controllers/authcontroller");
 authRoute(app, passport);
