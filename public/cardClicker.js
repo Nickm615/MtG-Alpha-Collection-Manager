@@ -2,7 +2,8 @@ const cardClickHandler = async (event) =>{
     event.preventDefault();
     // const image_url = event.target
     const id = (event.target.id)
-    console.log(id)
+    const url = (event.target.dataset.img)
+    console.log(id, url)
     
     //    const response =  await fetch('/api/cards/' +id, {
     //         method: 'GET',
@@ -14,7 +15,7 @@ const cardClickHandler = async (event) =>{
         // }else {
             await fetch('/card-list', {
                 method: 'POST',
-                body: JSON.stringify({id}),
+                body: JSON.stringify({id, url}),
                 headers: { 'Content-Type': 'application/json' },
     
         });

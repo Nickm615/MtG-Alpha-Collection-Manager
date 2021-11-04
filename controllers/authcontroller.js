@@ -66,12 +66,10 @@ module.exports = (app, passport) => {
   });
 
   app.post('/card-list', async (req, res) => {
-    console.log('===================================================')
-    console.log(req.body)
-    console.log('===================================================')
 
     try {
       console.log(req.session.loggedUser.id)
+      console.log(req.body.url)
 
         const checkCardData = await Collection.findOne({
             where: {
@@ -85,8 +83,9 @@ module.exports = (app, passport) => {
             const dbCardData = await Collection.create({
                 card_id: parseInt(req.body.id),
                 quantity: 1,
-                user_id: req.session.loggedUser.id
-            }, { fields: ['card_id', 'quantity', 'user_id'] });
+                user_id: req.session.loggedUser.id,
+                image_url: req.body.url
+            }, { fields: ['card_id', 'quantity', 'user_id', 'image_url'] });
         } else {
             // console.log('update data',checkCardData.dataValues);
             const dbCardData = await Collection.update({
