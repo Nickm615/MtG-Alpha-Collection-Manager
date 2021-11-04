@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(passport.initialize());
-app.use(passport.session(sess));
+app.use(passport.session());
 
 const authRoute = require("./controllers/authcontroller");
 authRoute(app, passport);
