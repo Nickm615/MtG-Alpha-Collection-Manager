@@ -53,7 +53,7 @@ module.exports = (app, passport) => {
       // Pass serialized data and session flag into template
       res.render("collection", {
         cards,
-        user: req.session.loggedUser,
+        user: req.session.passport.user,
       });
     } catch (err) {
       res.status(500).json(err);
