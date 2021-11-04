@@ -35,11 +35,11 @@ module.exports = (app, passport) => {
       // Serialize data so the template can read it
       const cards = collectionData.map((card) => card.get({ plain: true }));
       // console.log(cards);
-      
+
       req.session.save(() => {
         req.session.loggedUser = req.user;
       });
-      console.log(req.session)
+      console.log(req.session);
       // Pass serialized data and session flag into template
       res.render("collection", {
         cards,
@@ -50,11 +50,11 @@ module.exports = (app, passport) => {
     }
   });
 
-    app.get("/logout", (req, res) => {
-      req.session.destroy((err) => {
-        res.redirect("/");
-      });
+  app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+      res.redirect("/");
     });
+  });
 
   app.post(
     "/signin",
@@ -142,6 +142,6 @@ module.exports = (app, passport) => {
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
 
-    res.redirect("/signin");
+    res.redirect("/");
   }
 };
