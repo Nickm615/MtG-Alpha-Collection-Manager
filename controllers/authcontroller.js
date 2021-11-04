@@ -16,8 +16,8 @@ module.exports = (app, passport) => {
   app.post(
     "/signup",
     passport.authenticate("local-signup", {
-      successRedirect: "/collection",
-      failureRedirect: "/index",
+      successRedirect: "/signin",
+      failureRedirect: "/",
     })
   );
 
@@ -30,13 +30,6 @@ module.exports = (app, passport) => {
         where: {
           user_id: req.user.id,
         },
-        // include: [
-        //   {
-        //     model: Card,
-        //     // as: 'card_owner',
-        //     attributes: ["imageUrl"],
-        //   },
-        // ],
       });
       console.log(collectionData);
       // Serialize data so the template can read it
@@ -54,15 +47,6 @@ module.exports = (app, passport) => {
       res.status(500).json(err);
     }
   });
-    //   console.log(req.user);
-
-    //   req.session.save(() => {
-    //     req.session.loggedUser = req.user;
-    //   });
-    //   res.render("collection", {
-    //     user: req.session.loggedUser,
-    //   });
-    // });
 
     app.get("/logout", (req, res) => {
       req.session.destroy((err) => {
@@ -77,12 +61,15 @@ module.exports = (app, passport) => {
       failureRedirect: "/",
     })
   );
-  app.get("/card-list", async (req, res) => {
+  app.get("/card-list", isLoggedIn, async (req, res) => {
     try {
       // console.log(req.session.loggedUser.id)
       const dbCardData = await Card.findAll();
       // console.log(dbCardData)
       const cards = dbCardData.map((e) => e.get({ plain: true }));
+      req.session.save(() => {
+        req.session.loggedUser = req.user;
+      });
 
       res.render("card-list", {
         cards,
@@ -94,7 +81,7 @@ module.exports = (app, passport) => {
     }
   });
 
-  app.post("/card-list", async (req, res) => {
+  app.post("/card-list", isLoggedIn, async (req, res) => {
     try {
       console.log(req.session.loggedUser.id);
       console.log(req.body.url);
@@ -142,12 +129,7 @@ module.exports = (app, passport) => {
           }
         );
       }
-      // const dbCardData = await Collection.create({
-      //     card_id: parseInt(req.body.id),
-      //     quantity: 1,
-      //     user_id: 1
-      // // });
-      // } ,{fields:['card_id', 'quantity', 'user_id']});
+
       res.status(200).json("Card added to collection");
     } catch (err) {
       console.log(err);
