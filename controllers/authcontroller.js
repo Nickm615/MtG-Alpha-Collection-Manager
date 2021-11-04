@@ -20,8 +20,8 @@ module.exports = (app, passport) => {
       failureRedirect: "/",
     })
   );
-  app.get("/collection",  async (req, res) => {
-  // app.get("/collection", isLoggedIn, async (req, res) => {
+  // app.get("/collection",  async (req, res) => {
+  app.get("/collection", isLoggedIn, async (req, res) => {
     try {
       // console.log(req.user.id);
       // console.log("hello, world");
@@ -52,7 +52,7 @@ module.exports = (app, passport) => {
 
   app.get("/logout", (req, res) => {
     req.session.destroy((err) => {
-      res.redirect("/");
+      res.redirect("/logout");
     });
   });
 
@@ -63,8 +63,8 @@ module.exports = (app, passport) => {
       failureRedirect: "/",
     })
   );
-  app.get("/card-list",  async (req, res) => {
-  // app.get("/card-list", isLoggedIn, async (req, res) => {
+  // app.get("/card-list",  async (req, res) => {
+  app.get("/card-list", isLoggedIn, async (req, res) => {
     try {
       // console.log(req.session.loggedUser.id)
       const dbCardData = await Card.findAll();
@@ -83,8 +83,8 @@ module.exports = (app, passport) => {
       res.status(500).json(err);
     }
   });
-  app.post("/card-list",  async (req, res) => {
-  // app.post("/card-list", isLoggedIn, async (req, res) => {
+  // app.post("/card-list",  async (req, res) => {
+  app.post("/card-list", isLoggedIn, async (req, res) => {
     try {
       console.log(req.session.loggedUser);
       console.log(req.body);
@@ -140,12 +140,12 @@ module.exports = (app, passport) => {
     }
   });
 
-  // function isLoggedIn(req, res, next) {
-  //   if (req.isAuthenticated()) {
-  //     return next();
-  //   } else {
-  //     console.log("failure");
-  //     res.redirect("/");
-  //   }
-  // }
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      console.log("failure");
+      res.redirect("/logout");
+    }
+  }
 };
