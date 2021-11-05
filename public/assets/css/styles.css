@@ -1,3 +1,6 @@
+body{
+  background-color: rgb(68, 66, 87);
+}
 form {
   margin-top: 50px;
 }
@@ -5,6 +8,41 @@ form {
 .nav-link {
   display: contents;
   color: white;
+}
+#foh{
+  background-image: url("../Images/serrassanctum.png");
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 500px; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-overflow-scrolling: touch;
+}
+#foh-signup{
+  background-image: url("../Images/MemorialToGenius.jpg");
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 500px; */
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-overflow-scrolling: touch;
+  color: aliceblue;
+}
+#foh-signin{
+  background-image: url("../Images/4_Forest_JasonEngle.png");
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 500px; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-overflow-scrolling: touch;
+  color: aliceblue;
 }
 #gallery{
   background-image: url("../Images/Magic_card_back.jpg");
@@ -15,6 +53,11 @@ form {
   background-size: cover;
   -webkit-overflow-scrolling: touch;
 }
+#gallery img:hover {
+  box-shadow: 0 0 15px #0b1131;
+  cursor: pointer;
+}
+
 .bkgrnd {
   background-image: url("../Images/mtg-image-rotated.png");
   min-height: 500px;
@@ -27,31 +70,15 @@ form {
 
 
 
-@keyframes animateZ {
+/* @keyframes animateZ {
   from {
     transform: translateZ(0px);
   }
   to {
     transform: translateZ(4px);
   }
-}
-
-/* .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateZ(0px);
-}
-
-.foreground {
-  margin-top: auto;
-  margin-bottom: 50px;
-  transform-origin: 0;
-  transform: translateZ(3px);
-  transform: translateZ(3px) scale(0.625);
 } */
+
 
 .foreground h1 {
   font-size: 36px;
@@ -100,10 +127,12 @@ margin: 3px;
   justify-content: center;
   align-items: center;
 }
-/* header{
-	background-image: url("public\assets\Images\d8g26q6-b06ebfba-9945-4648-a171-8c40e9bdc363.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-} */
+
+.artist{
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  width: 100px;
+  color: black;
+
+}
