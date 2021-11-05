@@ -1,12 +1,12 @@
 <header></header>
 <div class="bkgrnd">
-  <div class="background">
+  {{!-- <div class="background">
     <img class="background__image" src="../public/assets/Images/mtg-image-rotated.png" />
-  </div>
+  </div> --}}
 
 <div class="container foreground">
     <div class="row foreground__content">
-        <div class="col-md Cinzel">
+        <div class="col-md Cinzel" id = "text-blurb">
             {{#if user}}
           <h1>Hello, {{user.first_name}}
                Here are the cards you've collected so far
