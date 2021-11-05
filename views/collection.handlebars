@@ -1,4 +1,5 @@
 <header></header>
+<<<<<<< HEAD
 <div class="parallax-container">
   {{!-- <div class="background">
     <img class="background__image" src="public\assets\Images\d8g26q6-b06ebfba-9945-4648-a171-8c40e9bdc363.jpg" />
@@ -6,6 +7,15 @@
 </div>
 <div class="container">
     <div class="row">
+=======
+<div class="bkgrnd">
+  <div class="background">
+    <img class="background__image" src="../public/assets/Images/mtg-image-rotated.png" />
+  </div>
+
+<div class="container foreground">
+    <div class="row foreground__content">
+>>>>>>> a9efafd17b785a8ae0b9ee7a0c83225ca7412936
         <div class="col-md Cinzel">
             {{#if user}}
           <h1>Hello, {{user.first_name}}
@@ -16,9 +26,10 @@
         <div id = 'card-field' class = 'd-inline-flex flex-wrap'>
         {{#each cards as |card|}}
         {{>card-gallery}}
-        {{!-- <p class="d-inline">You own {{quantity}}</p> --}}
+       {{!-- <p class="d-inline">You own {{quantity}}</p> --}}
         {{/each}}
         </div>
         </div>
+</div>
 </div>
 <script src="/assets/js/scripts.js"></script>
