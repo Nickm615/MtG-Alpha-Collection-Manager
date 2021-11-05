@@ -5,6 +5,7 @@ form {
 .nav-link {
   display: contents;
   color: white;
+  
 }
 
 .parallax-container {
@@ -61,3 +62,10 @@ form {
   justify-content: center;
   align-items: center;
 }
+/* header{
+	background-image: url("public\assets\Images\d8g26q6-b06ebfba-9945-4648-a171-8c40e9bdc363.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+} */
