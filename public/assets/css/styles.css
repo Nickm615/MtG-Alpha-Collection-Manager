@@ -8,14 +8,8 @@ form {
   
 }
 
-<<<<<<< HEAD
 /* .parallax-container {
   position: relative;
-=======
-.bkgrnd {
-  background-image: url("../Images/mtg-image-rotated.png");
-  /* position: relative;
->>>>>>> a9efafd17b785a8ae0b9ee7a0c83225ca7412936
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -80,7 +74,6 @@ form {
     background-repeat: no-repeat;
     background-attachment: fixed;
 } */
-<<<<<<< HEAD
 
 .parallax-container {
   /* The image used */
@@ -99,5 +92,3 @@ form {
 body, html {
   height: 100%;
 }
-=======
->>>>>>> a9efafd17b785a8ae0b9ee7a0c83225ca7412936
