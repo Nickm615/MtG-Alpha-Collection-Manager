@@ -25,6 +25,8 @@ form {
   -webkit-overflow-scrolling: touch;
 }
 
+
+
 @keyframes animateZ {
   from {
     transform: translateZ(0px);
@@ -62,6 +64,7 @@ form {
 #mtgCards{
 align-items: center;
 margin: 3px;
+
 } 
 
 #text-blurb{
@@ -81,6 +84,7 @@ margin: 3px;
   border-radius: 15px;
   font-family: "Cinzel", serif;
   font-weight: bolder;
+  margin-left: 60px;
   /* display: flex; */
   /* justify-content: center;
   align-items: center; */
