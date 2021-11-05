@@ -1,9 +1,9 @@
 <header></header>
-<div class="parallax-container">
+<div class="bkgrnd">
   <div class="background">
-    <img class="background__image" src="public\assets\Images\d8g26q6-b06ebfba-9945-4648-a171-8c40e9bdc363.jpg" />
+    <img class="background__image" src="../public/assets/Images/mtg-image-rotated.png" />
   </div>
-</div>
+
 <div class="container foreground">
     <div class="row foreground__content">
         <div class="col-md Cinzel">
@@ -16,9 +16,10 @@
         <div id = 'card-field' class = 'd-inline-flex flex-wrap'>
         {{#each cards as |card|}}
         {{>card-gallery}}
-        {{!-- <p class="d-inline">You own {{quantity}}</p> --}}
+       {{!-- <p class="d-inline">You own {{quantity}}</p> --}}
         {{/each}}
         </div>
         </div>
+</div>
 </div>
 <script src="/assets/js/scripts.js"></script>
