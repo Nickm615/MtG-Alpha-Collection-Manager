@@ -1,10 +1,6 @@
-//I commented out the bcrypt hashing, the check password method and the before create hook to validate user info. If we need them instead of passport we can easily just uncomment them.
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection')
-// const bcrypt = require('bcrypt');
 class User extends Model{
-    //checkPassword(loginPw) {
-    // return bcrypt.compareSync(loginPw, this.password);
 }
 
 User.init(

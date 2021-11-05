@@ -13,7 +13,6 @@ form {
   background-image: url("../Images/serrassanctum.png");
   height: 100vh;
   width: 100vw;
-  /* min-height: 500px; */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -24,8 +23,6 @@ form {
   background-image: url("../Images/nicolBolas.png");
   height: 100vh;
   width: 100vw;
-  /* min-height: 500px; */
-  /* background-attachment: fixed; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,7 +33,6 @@ form {
   background-image: url("../Images/bitterblossom.png");
   height: 100vh;
   width: 100vw;
-  /* min-height: 500px; */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -67,18 +63,6 @@ form {
   background-size: cover;
   -webkit-overflow-scrolling: touch;
 }
-
-
-
-/* @keyframes animateZ {
-  from {
-    transform: translateZ(0px);
-  }
-  to {
-    transform: translateZ(4px);
-  }
-} */
-
 
 .foreground h1 {
   font-size: 36px;
@@ -112,9 +96,6 @@ margin: 3px;
   font-family: "Cinzel", serif;
   font-weight: bolder;
   margin-left: 60px;
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
 }
 .data-center {
   margin: auto;
