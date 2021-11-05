@@ -44,31 +44,17 @@ form {
   -webkit-overflow-scrolling: touch;
 }
 
-@keyframes animateZ {
+
+
+/* @keyframes animateZ {
   from {
     transform: translateZ(0px);
   }
   to {
     transform: translateZ(4px);
   }
-}
-
-/* .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateZ(0px);
-}
-
-.foreground {
-  margin-top: auto;
-  margin-bottom: 50px;
-  transform-origin: 0;
-  transform: translateZ(3px);
-  transform: translateZ(3px) scale(0.625);
 } */
+
 
 .foreground h1 {
   font-size: 36px;
@@ -81,6 +67,7 @@ form {
 #mtgCards{
 align-items: center;
 margin: 3px;
+
 } 
 
 #text-blurb{
@@ -100,6 +87,7 @@ margin: 3px;
   border-radius: 15px;
   font-family: "Cinzel", serif;
   font-weight: bolder;
+  margin-left: 60px;
   /* display: flex; */
   /* justify-content: center;
   align-items: center; */
@@ -115,10 +103,8 @@ margin: 3px;
   justify-content: center;
   align-items: center;
 }
-/* header{
-	background-image: url("public\assets\Images\d8g26q6-b06ebfba-9945-4648-a171-8c40e9bdc363.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-} */
+
+.artist{
+  position: fixed;
+  
+}
