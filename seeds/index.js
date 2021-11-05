@@ -26,3 +26,9 @@ const seedAll = async (page_num) => {
 for (let i = 1; i < 4; i++) {
     seedAll(i);
 }
+
+// var i = 1;
+// while (0<i<100) {
+//     seedAll(i);
+//     i++;
+// }
