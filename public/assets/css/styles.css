@@ -8,15 +8,21 @@ form {
   
 }
 
-.parallax-container {
-  position: relative;
+.bkgrnd {
+  background-image: url("../Images/mtg-image-rotated.png");
+  /* position: relative;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   perspective: 8px;
   perspective-origin: 0%;
-  display: flex;
+  display: flex; */
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -31,7 +37,7 @@ form {
 }
 
 
-.background {
+/* .background {
   position: absolute;
   top: 0;
   left: 0;
@@ -46,7 +52,7 @@ form {
   transform-origin: 0;
   transform: translateZ(3px);
   transform: translateZ(3px) scale(0.625);
-}
+} */
 
 .foreground h1 {
   font-size: 36px;
