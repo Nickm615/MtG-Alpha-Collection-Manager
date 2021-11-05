@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-md">
             {{#if user}}
-          Hello, {{user.first_name}}
+          <h1>Hello, {{user.first_name}}
                Here are the cards you've collected so far
            </h1>
            {{/if}}
         </div>
-        <div id = 'card-field' class = 'd-inline-flex'>
+        <div id = 'card-field' class = 'd-inline-flex flex-wrap'>
         {{#each cards as |card|}}
         {{>card-gallery}}
         {{!-- <p class="d-inline">You own {{quantity}}</p> --}}

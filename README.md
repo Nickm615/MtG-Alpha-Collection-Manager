@@ -1,2 +1,0 @@
-# Project-2-MtG-Collection-Manager
-This is a full-stack web application designed to allow the user to view and edit their collection of magic the gathering cards conveniently online. It uses MtGIO web api to populate a table of cards which the user can query and add to their own collection, stored in a user table.

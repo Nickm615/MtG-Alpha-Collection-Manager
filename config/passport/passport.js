@@ -6,18 +6,26 @@ module.exports = (passport, user) => {
   const LocalStrategy = require("passport-local").Strategy;
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    return done(null, user.id);
   });
 
   // used to deserialize the user
+  // passport.deserializeUser((id, done) => {
+  //   User.findByPk(id).then((user) => {
+  //     if (user) {
+  //       return done(null, user.get());
+  //     } else {
+  //       return done(user.errors, null);
+  //     }
+  //   });
+  // });
+
   passport.deserializeUser((id, done) => {
-    User.findByPk(id).then((user) => {
-      if (user) {
-        done(null, user.get());
-      } else {
-        done(user.errors, null);
-      }
-    });
+    User.findByPk(id)
+      .then((user) => {
+        done(null, user);
+      })
+      .catch((err) => done(err));
   });
 
   passport.use(
@@ -89,18 +97,6 @@ module.exports = (passport, user) => {
 
         User.findOne({ where: { email: email } })
           .then((user, err) => {
-            // console.log(user);
-            // if (!user) {
-            //   // console.log(done(null, false, { message: "Email does not exist" }));
-            //   // return { msg: "test" };
-            //   // return done(err);
-            //   // return done(null, false, { message: "Email does not exist" });
-            // }
-
-            // if (!isValidPassword(user.password, password)) {
-            //   return done(null, false, { message: "Incorrect password." });
-            // }
-
             console.log(!user);
             console.log(!isValidPassword(user.password, password));
 
