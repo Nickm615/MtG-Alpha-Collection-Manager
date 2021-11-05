@@ -1,3 +1,6 @@
+body{
+  background-color: rgb(68, 66, 87);
+}
 form {
   margin-top: 50px;
 }
@@ -5,6 +8,17 @@ form {
 .nav-link {
   display: contents;
   color: white;
+}
+#foh{
+  background-image: url("../Images/serrassanctum.png");
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 500px; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-overflow-scrolling: touch;
 }
 #gallery{
   background-image: url("../Images/Magic_card_back.jpg");
@@ -15,6 +29,11 @@ form {
   background-size: cover;
   -webkit-overflow-scrolling: touch;
 }
+#gallery img:hover {
+  box-shadow: 0 0 15px #0b1131;
+  cursor: pointer;
+}
+
 .bkgrnd {
   background-image: url("../Images/mtg-image-rotated.png");
   min-height: 500px;
