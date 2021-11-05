@@ -20,6 +20,30 @@ form {
   background-size: cover;
   -webkit-overflow-scrolling: touch;
 }
+#foh-signup{
+  background-image: url("../Images/MemorialToGenius.jpg");
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 500px; */
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-overflow-scrolling: touch;
+  color: aliceblue;
+}
+#foh-signin{
+  background-image: url("../Images/4_Forest_JasonEngle.png");
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 500px; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-overflow-scrolling: touch;
+  color: aliceblue;
+}
 #gallery{
   background-image: url("../Images/Magic_card_back.jpg");
   min-height: 500px;
