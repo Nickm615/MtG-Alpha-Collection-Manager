@@ -1,13 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection')
-// const mtg = require('mtgsdk')
 
 class Card extends Model {}
 
-// // mtg.card.where({setName: 'Limited Edition Alpha'})
-// // .then(cards => {
-// //     console.log(cards)
-// })
 Card.init(
 {
     id: {

@@ -1,24 +1,12 @@
 const bCrypt = require("bcrypt");
 
 module.exports = (passport, user) => {
-  // console.log(user);
   const User = user;
   const LocalStrategy = require("passport-local").Strategy;
 
   passport.serializeUser((user, done) => {
     return done(null, user.id);
   });
-
-  // used to deserialize the user
-  // passport.deserializeUser((id, done) => {
-  //   User.findByPk(id).then((user) => {
-  //     if (user) {
-  //       return done(null, user.get());
-  //     } else {
-  //       return done(user.errors, null);
-  //     }
-  //   });
-  // });
 
   passport.deserializeUser((id, done) => {
     User.findByPk(id)
@@ -41,9 +29,9 @@ module.exports = (passport, user) => {
         var generateHash = (password) => {
           return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
         };
-        // console.log(user);
+
         User.findOne({ where: { email: email } }).then((user) => {
-          // console.log(user);
+
           if (user) {
             console.log("user exist");
             return done(null, false, {
@@ -60,7 +48,7 @@ module.exports = (passport, user) => {
               first_name: req.body.firstname,
               last_name: req.body.lastname,
             };
-            //   console.log(data);
+  
             User.create(data).then((newUser) => {
               console.log(newUser);
               if (!newUser) {

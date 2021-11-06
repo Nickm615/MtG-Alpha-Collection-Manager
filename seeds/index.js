@@ -19,16 +19,10 @@ const seedAll = async (page_num) => {
             return ob;
         }
      )
-// console.log(cardData);
+
     await seedCards(cardData)
 
 }
 for (let i = 1; i < 4; i++) {
     seedAll(i);
 }
-
-// var i = 1;
-// while (0<i<100) {
-//     seedAll(i);
-//     i++;
-// }
