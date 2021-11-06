@@ -19,7 +19,6 @@ const seedAll = async (page_num) => {
             return ob;
         }
      )
-
     await seedCards(cardData)
 
 }

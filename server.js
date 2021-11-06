@@ -1,4 +1,3 @@
-//I copied this directly from mini-project unit 14. We can delete what we don't need, add what we do, etc. --Nick
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
@@ -7,7 +6,6 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const routes = require("./controllers");
 const models = require("./models");
-// const helpers = require('')
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -48,7 +46,6 @@ app.use(passport.session(sess));
 const authRoute = require("./controllers/authcontroller");
 authRoute(app, passport);
 
-// app.use(routes)
 app.use(authRoute);
 
 const passportFunction = require("./config/passport/passport.js");

@@ -28,8 +28,6 @@ Card.init(
         allowNull: false,
         unique: true
     }
-
-
 },
 {
     sequelize,

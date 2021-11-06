@@ -29,9 +29,7 @@ module.exports = (passport, user) => {
         var generateHash = (password) => {
           return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
         };
-
         User.findOne({ where: { email: email } }).then((user) => {
-
           if (user) {
             console.log("user exist");
             return done(null, false, {
@@ -48,7 +46,6 @@ module.exports = (passport, user) => {
               first_name: req.body.firstname,
               last_name: req.body.lastname,
             };
-  
             User.create(data).then((newUser) => {
               console.log(newUser);
               if (!newUser) {
