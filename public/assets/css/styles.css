@@ -1,4 +1,4 @@
-body{
+body {
   background-color: rgb(68, 66, 87);
 }
 form {
@@ -9,7 +9,7 @@ form {
   display: contents;
   color: white;
 }
-#foh{
+#foh {
   background-image: url("../Images/serrassanctum.png");
   height: 100vh;
   width: 100vw;
@@ -19,7 +19,7 @@ form {
   background-size: cover;
   -webkit-overflow-scrolling: touch;
 }
-#foh-signup{
+#foh-signup {
   background-image: url("../Images/nicolBolas.png");
   height: 100vh;
   width: 100vw;
@@ -29,7 +29,7 @@ form {
   -webkit-overflow-scrolling: touch;
   color: aliceblue;
 }
-#foh-signin{
+#foh-signin {
   background-image: url("../Images/bitterblossom.png");
   height: 100vh;
   width: 100vw;
@@ -40,7 +40,7 @@ form {
   -webkit-overflow-scrolling: touch;
   color: aliceblue;
 }
-#gallery{
+#gallery {
   background-image: url("../Images/Magic_card_back.jpg");
   min-height: 500px;
   background-attachment: fixed;
@@ -72,17 +72,15 @@ form {
   font-family: "Cinzel", serif;
 }
 
-#mtgCards{
-align-items: center;
-margin: 3px;
+#mtgCards {
+  align-items: center;
+  margin: 3px;
+}
 
-} 
-
-#text-blurb{
- 
+#text-blurb {
   background-color: rgba(43, 44, 65, 0.205);
   color: black;
-  font-weight:1000;
+  font-weight: 1000;
   text-align: center;
 }
 
@@ -109,17 +107,15 @@ margin: 3px;
   align-items: center;
 }
 
-.artist{
+.artist {
   position: fixed;
   bottom: 0;
   right: 40px;
   width: 100px;
   color: black;
-
 }
 
-#text-signup{
- 
+#text-signup {
   background-color: rgba(43, 44, 65, 0.205);
   color: white;
 }
