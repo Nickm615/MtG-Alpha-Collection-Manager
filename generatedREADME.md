@@ -25,7 +25,7 @@ Ensure you have all required node modules installed. Refer to the package to ens
 
 ## Usage
 
-Create an account on the starting screen and log in. You will be directed to your empty collection. Use the navigation bar to go to the add cards screen, where you can click on na given card to add it to your collection. Find the live website on heroku here: https://mtg-alpha-collection-manager.herokuapp.com/ You can log in using these credentials: RichardGarfieldPHD@wizards.com with the password 'testtest'
+Create an account on the starting screen and log in. You will be directed to your empty collection. Use the navigation bar to go to the add cards screen, where you can click on na given card to add it to your collection.
 
 
 ## Credits
@@ -36,4 +36,4 @@ Sarah Garrison https://github.com/segarrison, Nate Skidmore https://github.com/n
 ## License
 
 This project is licensed under MIT
-You can find out more about this license by clicking this badge: [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)
+You can find out more about this license by clicking this badge: ![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)
