@@ -37,7 +37,7 @@ DB_USER=[your MySQL username]
 
 ## Usage
 
-Create an account on the starting screen and log in. You will be directed to your empty collection. Use the navigation bar to go to the add cards screen, where you can click on any given card to add it to your collection. Find the live website on heroku here: https://project-2-collection-manager.herokuapp.com/ 
+Create an account on the starting screen and log in. You will be directed to your empty collection. Use the navigation bar to go to the add cards screen, where you can click on any given card to add it to your collection. Find the live website on heroku here: https://mtg-alpha-collection-manager.herokuapp.com/ 
 
 You can log in using these credentials: RichardGarfieldPHD@wizards.com with the password 'testtest'.
 
